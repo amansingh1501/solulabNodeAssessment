@@ -11,7 +11,12 @@ const cab = new Schema({
         required:true
     },
     location : {
-        type: Object
+        type: {
+            type: String,
+            required:true,
+            default: 'Point',
+          },
+        coordinates: [Number]
     },
     active : {
        type: Boolean,
@@ -24,5 +29,6 @@ const cab = new Schema({
         default: new Date()
     }
 });
+cab.index( { location : "2dsphere" } )
 
 module.exports = mongoose.model('cab', cab)
