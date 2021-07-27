@@ -1,0 +1,23 @@
+{
+  "name": "solulab",
+  "version": "1.0.0",
+  "description": "NODE JS ASSESSMENT FOR SOLULABS. CAB BOOKING SYSTEM",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/amansingh1501/solulabNodeAssessment.git"
+  },
+  "keywords": [
+    "nodejs",
+    "javascript"
+  ],
+  "author": "Aman Singh",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/amansingh1501/solulabNodeAssessment/issues"
+  },
+  "homepage": "https://github.com/amansingh1501/solulabNodeAssessment#readme"
+}
