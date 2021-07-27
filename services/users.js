@@ -2,7 +2,7 @@ const users = require("../models/users");
 const bcrypt = require('bcryptjs')
 class User {
     getUser(condition){
-        return new Promise = ((resolve, reject) => {
+        return new Promise((resolve, reject) => {
             users.findOne(condition).exec((err, result)=>{
                 if(err){
                     reject(err)
