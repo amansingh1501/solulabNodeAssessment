@@ -15,6 +15,10 @@ const users = new Schema({
         required:true,
         default: new Date()
     },
+    password:{
+        type:String,
+        required:true
+    },
     Admin : {
         type : Boolean,
         required:true,

@@ -4,7 +4,7 @@
   "description": "NODE JS ASSESSMENT FOR SOLULABS. CAB BOOKING SYSTEM",
   "main": "index.js",
   "scripts": {
-    "start" : "node index.js",
+    "start": "node index.js",
     "test": "npm test"
   },
   "repository": {
@@ -22,6 +22,7 @@
   },
   "homepage": "https://github.com/amansingh1501/solulabNodeAssessment#readme",
   "dependencies": {
+    "bcryptjs": "^2.4.3",
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
     "mongoose": "^5.13.3"
