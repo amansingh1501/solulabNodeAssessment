@@ -1,3 +1,7 @@
+const users = require('../models/users');
+
+
+/** middleware to check if the user is currently logged in or not */
 exports.checkIsLoggedIn =(req,res,next) =>{
     if(req.cookies.userId){
         users.findOne({_id: req.cookies.userId}).exec((err,result)=>{
@@ -9,7 +13,7 @@ exports.checkIsLoggedIn =(req,res,next) =>{
         res.status(401).json({status:'error', message:'Unauthorised'});
     }
 }
-
+/** Middleware to check if the current logged in user is admin or not. */
 exports.checkIsAdmin = (req,res) =>{
     if(req.cookies.userId){
         users.findOne({_id: req.cookies.userId}).exec((err,result)=>{
