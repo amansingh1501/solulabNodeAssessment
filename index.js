@@ -5,6 +5,8 @@ require('dotenv').config();
 const db = require('./configs/dbConfig.js');
 /* cookie parser for parsing our cookies from request*/
 const cookieParser = require('cookie-parser');
+/** Import Rate limiter library */
+const rateLimit = require("express-rate-limit");
 /* our app port from the Environment */
 const PORT = process.env.PORT || 3000;
 /* import our error handlers */
@@ -13,7 +15,14 @@ const {logErrors,clientErrorHandler,errorHandler} = require('./errorHandler')
 app.use(logErrors)
 app.use(clientErrorHandler)
 app.use(errorHandler)
+/**Limiter Config */
+const limiter = rateLimit({
+    windowMs: 15 * 60 * 1000, // 15 minutes
+    max: 100 // limit each IP to 100 requests per windowMs
+  });
 
+
+app.use(limiter);
 app.use(cookieParser())
 /*import all our routes */
 const routers = require('./routes');
