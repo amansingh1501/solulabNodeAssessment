@@ -2,6 +2,7 @@ const cabs = require("../models/cabs")
 
 
 class Cab{
+    /**Get cabs near 100 m of current location */
     getCabsNearMyLocation(location,skip=0, limit=10){
         return new Promise((resolve,reject)=>{
             cabs.find({
@@ -18,6 +19,7 @@ class Cab{
             })
         })
     }
+    /** Create cab. Only accessible by admin */
     createCab(data){
         return new Promise((resolve,reject)=>{
             new cabs(data).save((err,result)=>{
@@ -26,6 +28,7 @@ class Cab{
             })
         })
     }
+    /** Update Cab location */
     updateLocation(id,location){
         return new Promise((resolve, reject)=>{
             cabs.updateOne({_id:id}, {$set: {location : location}}).exec((err,result)=>{

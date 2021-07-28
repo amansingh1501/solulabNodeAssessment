@@ -1,6 +1,7 @@
 const bookingService = require('../services/bookings');
 const Booking = new bookingService();
-const ObjectId = require('mongoose').Types.ObjectId
+
+/**create booking for a cab for current user */
 exports.createBooking=(req,res) =>{
     if(req.body.cabId){
         const data = {
@@ -9,6 +10,7 @@ exports.createBooking=(req,res) =>{
             startLocation : req.body.startLocation,
             endLocation : req.body.endLocation || null
         }
+        
         Booking.createBooking(data).then((result) =>{
             if(result) res.json({status:'success', message:'Booking Successful'});
             else res.json({status:'error',message:'Error booking Cab!'})
@@ -19,6 +21,7 @@ exports.createBooking=(req,res) =>{
         res.json({status:'error', message:'Please select a cab to book.'})
     }
 }
+/** get bookings for current logged in user */
 exports.getBookingsForUser = (req,res)=>{
     console.log(req.cookies.userId)
 
@@ -31,6 +34,7 @@ exports.getBookingsForUser = (req,res)=>{
         res.json({status:'error',message:err})
     })
 }
+/** make to get request with the booking Id to complete the trip */
 exports.completeTrip = (req,res) =>{
     Booking.updateBooking({droppedAt : new Date()}, req.params.id ).then((result)=>{
         if(result) res.json({status:'success', message:'Trip Completed'});

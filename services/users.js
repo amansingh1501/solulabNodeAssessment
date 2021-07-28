@@ -1,6 +1,7 @@
 const users = require("../models/users");
 const bcrypt = require('bcryptjs')
 class User {
+    /**Get user details */
     getUser(condition){
         return new Promise((resolve, reject) => {
             users.findOne(condition).exec((err, result)=>{
@@ -15,6 +16,7 @@ class User {
         })
         
     }
+    /**Create user */
     createUser(data){
         return new Promise((resolve,reject)=>{
             new users(data).save((err,result)=>{
@@ -23,6 +25,7 @@ class User {
             })
         })
     }
+    /** Generate hash from a string to be saved in password field */
     generateHash(password){
         return new Promise((resolve,reject)=>{
             const salt = bcrypt.genSaltSync(10);
@@ -30,6 +33,7 @@ class User {
             resolve(hash)
         })
     }
+    /** Compare the Database password hash with the password string provided by the user */
     compareHash(password, hash){
         return new Promise((resolve,reject)=>{
             const result = bcrypt.compareSync(password, hash);
