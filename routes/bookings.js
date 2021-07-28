@@ -3,9 +3,9 @@ const router = express.Router();
 
 const bookingController = require('../controllers/bookings');
 
-router.get('/bookings', bookingController.getBookings);
+router.get('/bookings', bookingController.getBookingsForUser);
 router.post('/booking', bookingController.createBooking);
-router.post('/update/:id', bookingController.completeTrip)
+router.get('/update/:id', bookingController.completeTrip)
 
 module.exports = router;
 
